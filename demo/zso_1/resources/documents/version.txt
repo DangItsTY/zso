@@ -1,0 +1,9 @@
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+//	Variables
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+Developed 11/09/14 at RamHacks.
+Features mini-game to kill 30 zombies before losing 10 health.
+Has
+	Knife
+	Shooting
+	Barricades

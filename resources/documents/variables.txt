@@ -1,0 +1,8 @@
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+//	Variables
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+This is a list of all variables used, sorted by location. Update this list frequently!
+
+//	library.js
+
+//	objects.js

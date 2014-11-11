@@ -1,0 +1,11 @@
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+//	Naming Conventions
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+-	lowercase
+-	important information first, then separate with underscores
+-	don't have to separate by words
+-	examples
+-	dinosaur
+-	dinosaurblue (note still one word, meaning this is an object called "dinosaurblue" different from just object "dinosaur"
+-	dinosaurblue_variation1 (note how i used underscore here to separate a second piece of information, the variation
+-	dinosaurblue_variation2 (another example of the above example)
