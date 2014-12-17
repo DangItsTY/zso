@@ -8,13 +8,15 @@
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
 var preload = function() {
 	objectList[oCount] = new survivor(CANVASWIDTH/2, CANVASHEIGHT/2);		//	Creates an object inside objectList
-	selectedPlayer = 0;		//	Sets currently controlled object to the first object created (ie the one above)
+	selectedPlayer = oCount - 1;		//	Sets currently controlled object to the first object created (ie the one above)
 	
 	//	System objects
 	objectList[oCount] = new physics(0, 0);
 	oPhysics = oCount - 1;
 	objectList[oCount] = new camera(0, 0);
 	objectList[oCount] = new spawner(0, 0);
+	
+	//tileList[tCount] = new forestbg(-1300, -700);
 	
 	//	Test Floor
 	/*
@@ -246,8 +248,8 @@ var render = function () {
 	ctxOff.fillStyle = "rgb(0,0,0)";
     ctxOff.fillRect (0,0,CANVASWIDTH,CANVASHEIGHT);		//	Draw black background
 	
-	drawList(objectList);	//	Draw objects (is now prerendered)
 	drawList(tileList);	//	Draw objects (is now prerendered)
+	drawList(objectList);	//	Draw objects (is now prerendered)
 	
 	ctx.drawImage(canvasOff, 0, 0);		//	Draw prerendered canvas onto "real" canvas
 };

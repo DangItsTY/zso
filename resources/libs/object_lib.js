@@ -170,7 +170,7 @@ var survivor = function(x, y) {
 	this.imageX = 0;
 	this.imageY = 0;
 	this.image = new Image();
-	this.image.src = "resources/images/square_blue.png";
+	this.image.src = "resources/images/player.png";
 	this.collisionType = "solid";
 	this.runInput = function() { survivor_input(); die_act(object); };
 	this.act = function(object) { };
@@ -225,7 +225,7 @@ var zombie = function(x, y) {
 	this.imageX = 0;
 	this.imageY = 0;
 	this.image = new Image();
-	this.image.src = "resources/images/square_red.png";
+	this.image.src = "resources/images/zombie.png";
 	this.collisionType = "solid";
 	this.runInput = function() { };
 	this.act = function(object) { follow_act(object); wander_act(object); die_act(object); attackready_act(object); };
@@ -272,7 +272,7 @@ var bullet = function(x, y) {
 	this.imageX = 0;
 	this.imageY = 0;
 	this.image = new Image();
-	this.image.src = "resources/images/square_yellow.png";
+	this.image.src = "resources/images/bullet.png";
 	this.collisionType = "solid";
 	this.runInput = function() { };
 	this.act = function(object) { lifetime_act(object); };
@@ -315,7 +315,7 @@ var knife = function(x, y) {
 	this.imageX = 0;
 	this.imageY = 0;
 	this.image = new Image();
-	this.image.src = "resources/images/square_yellow.png";
+	this.image.src = "resources/images/knife.png";
 	this.collisionType = "solid";
 	this.runInput = function() { };
 	this.act = function(object) { lifetime_act(object); meleeFollow_act(object); };
@@ -358,7 +358,7 @@ var barricade = function(x, y) {
 	this.imageX = 0;
 	this.imageY = 0;
 	this.image = new Image();
-	this.image.src = "resources/images/square_yellow.png";
+	this.image.src = "resources/images/barricade.png";
 	this.collisionType = "solid";
 	this.runInput = function() { };
 	this.act = function(object) { die_act(object); };
@@ -392,7 +392,7 @@ var tile = function(x, y, type) {
 	this.imageX = 0;
 	this.imageY = 0;
 	this.image = new Image();
-	this.image.src = "resources/images/square_green.png";
+	this.image.src = "resources/images/grass.png";
 	this.collisionType = "solid";
 	//this.energy = 0;
 	//this.energyObject = new energy(this);
@@ -411,4 +411,16 @@ var tile = function(x, y, type) {
 			break;
 		default:
 	}
+};
+
+var forestbg = function(x, y) {
+	this.x = x;
+	this.y = y;
+	this.size = 2600;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/forestbg2.png";
+	this.collisionType = "parallax";
+	tCount++;
 };
