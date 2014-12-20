@@ -10,7 +10,7 @@ var drawList = function(list) {
 		
 		//	TyTest - New draw method with new actcamera method
 		if (list[i].collisionType == "parallax") {
-			ctxOff.drawImage(list[i].image, list[i].imageX*list[i].size, list[i].imageY*list[i].size, list[i].size, list[i].size, (list[i].x-cameraX)/2, (list[i].y-cameraY)/2, list[i].size, list[i].size)
+			ctxOff.drawImage(list[i].image, list[i].imageX*list[i].size, list[i].imageY*list[i].size, list[i].size, list[i].size, (list[i].x-cameraX)/4, (list[i].y-cameraY)/4, list[i].size, list[i].size)
 		} else if (list[i].x < cameraX+CANVASWIDTH+IMAGESIZE && list[i].y < cameraY+CANVASHEIGHT+IMAGESIZE && list[i].x > cameraX-IMAGESIZE && list[i].y > cameraY-IMAGESIZE) {
 			ctxOff.drawImage(list[i].image, list[i].imageX*list[i].size, list[i].imageY*list[i].size, list[i].size, list[i].size, list[i].x-cameraX-(list[i].size/2), list[i].y-cameraY-(list[i].size/2), list[i].size, list[i].size);
 		}

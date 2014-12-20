@@ -16,7 +16,7 @@ var preload = function() {
 	objectList[oCount] = new camera(0, 0);
 	objectList[oCount] = new spawner(0, 0);
 	
-	//tileList[tCount] = new forestbg(-1300, -700);
+	tileList[tCount] = new forestbg(-1300, -700);
 	
 	//	Test Floor
 	/*
