@@ -44,6 +44,7 @@ var isInRange = function (object, target, rangeSize) {
 };
 
 var roll = function (min, max) {
+//	Rolls a random number between min and max both inclusive
 	return (Math.floor(Math.random() * (max-min+1)) + min);
 };
 
@@ -65,4 +66,31 @@ function getMousePos(canvas, evt) {
       x: evt.clientX - rect.left,
       y: evt.clientY - rect.top
     };
+}
+
+function rollFrequency(array) {
+//	Does a dice roll based on frequency
+//	Returns position of item in array
+var target = roll(0, 100) / 100;
+var total = array.reduce(function(sum, num){ return sum + num }, 0);
+var lower = 0;
+var percent = 0;
+var iterator = 0;
+var found = false;	//	Not sure if I actually need this
+while (!found) {
+	if (iterator == array.length - 1) {
+		found = true;
+		return iterator;
+	}
+	percent = (array[iterator] / total) + lower;
+	if (lower <= target && target <= percent) {
+		found = true;
+		return iterator;
+	}
+	else {
+		lower = percent;
+		iterator += 1;
+	}
+}
+
 }

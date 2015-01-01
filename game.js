@@ -7,6 +7,38 @@
 //	Preload
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
 var preload = function() {
+	objectList[oCount] = new flybot(CANVASWIDTH/2, CANVASHEIGHT/2);
+	selectedPlayer = oCount - 1;
+	
+	//	System objects
+	objectList[oCount] = new physics(0, 0);
+	oPhysics = oCount - 1;
+	objectList[oCount] = new camera(0, 0);
+	
+	var testloc = 0;
+	for (i = 0; i < 40; i++) {
+		switch(rollFrequency(desert)) {
+			case 0:
+				tileList[tCount] = new tile1(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			case 1:
+				tileList[tCount] = new tile2(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			case 2:
+				tileList[tCount] = new tile3(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			case 3:
+				tileList[tCount] = new tile4(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			default:
+				//	Nothing
+		}
+		testloc += 16;
+	}
+};
+
+var preload2 = function() {
+	//	This preloads the demo
 	objectList[oCount] = new survivor(CANVASWIDTH/2, CANVASHEIGHT/2);		//	Creates an object inside objectList
 	selectedPlayer = oCount - 1;		//	Sets currently controlled object to the first object created (ie the one above)
 	

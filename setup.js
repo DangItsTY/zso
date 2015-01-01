@@ -18,6 +18,14 @@ var tileList = new Array();
 var tCount = 0;
 var mousePos;	//	The mouse position in mousePos.x for x, mousePos.y for y
 
+//	Some test frequencies
+var desert = new Array();
+desert[0] = 16;
+desert[1] = 5;
+desert[2] = 5;
+desert[3] = 1;
+//desert.sort(function(a, b){return b - a});	//	if i'm too lazy to sort, i can use this handy sort function!
+
 //	Some test globals
 var oPhysics = 0;
 var zombiekills = 0;

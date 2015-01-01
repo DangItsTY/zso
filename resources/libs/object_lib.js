@@ -56,9 +56,41 @@ var flybot = function(x, y) {
 	this.runInput = function() { flybot_input(); };
 	this.act = function(object) { };
 	this.resolve = function(object) { };
-	oCount++;
 	
+	//	~~~~~~~*~~~~~~~*
+	//	Property Fields
+	//	~~~~~~~*~~~~~~~*
+	this.health = 10;
+	this.damage = 1;
+	this.range;
+	this.attackspeed;
+	this.attacktimer;
+	this.target;
+	this.readytoattack;
+	this.readytodie = false;
 	this.speed = 256;
+	this.weight = 0;
+	this.airtimer = 0.0;
+	
+	this.jumpTimer = 0.0;
+	this.jumpSpeed = 192;
+	this.jumpDuration = 5;
+	this.jumpReady = true;
+	
+	this.doubleJumpTimer = 0.0;
+	this.doubleJumpSpeed = 256;
+	this.doubleJumpDuration = 1.0;
+	this.doubleJumpReady = false;
+	
+	this.jumpCount = 0;
+	this.jumpMax = 2;
+	
+	this.vX = 0;
+	this.vY = 0;
+	
+	this.direction = -1;
+	
+	oCount++;
 };
 
 var gravity = function(x, y) {
@@ -411,6 +443,54 @@ var tile = function(x, y, type) {
 			break;
 		default:
 	}
+};
+
+var tile1 = function(x, y, type) {
+	this.x = x;
+	this.y = y;
+	this.size = 16;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/square_blue.png";
+	this.collisionType = "solid";
+	tCount++;
+};
+
+var tile2 = function(x, y, type) {
+	this.x = x;
+	this.y = y;
+	this.size = 16;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/square_green.png";
+	this.collisionType = "solid";
+	tCount++;
+};
+
+var tile3 = function(x, y, type) {
+	this.x = x;
+	this.y = y;
+	this.size = 16;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/square_red.png";
+	this.collisionType = "solid";
+	tCount++;
+};
+
+var tile4 = function(x, y, type) {
+	this.x = x;
+	this.y = y;
+	this.size = 16;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/square_yellow.png";
+	this.collisionType = "solid";
+	tCount++;
 };
 
 var forestbg = function(x, y) {
