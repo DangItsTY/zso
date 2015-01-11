@@ -15,15 +15,22 @@ var gravity_act = function() {
 
 var velocity_act = function() {
 	for (var i = 0; i < objectList.length; i++) {
-		objectList[i].x += objectList[i].vX;
+		objectList[i].x += objectList[i].vX * modifier;
 		objectList[i].y += objectList[i].vY;
 	}
 };
 
 var friction_act = function() {
 	for (var i = 0; i < objectList.length; i++) {
-		objectList[i].x += objectList[i].vX;
-		objectList[i].y += objectList[i].vY;
+		if (Math.abs(objectList[i].vX) > 1) {
+			if (objectList[i].vX > 0) {
+				objectList[i].vX -= objectList[oPhysics].frictionForce * (objectList[i].weight * modifier);
+			} else {
+				objectList[i].vX += objectList[oPhysics].frictionForce * (objectList[i].weight * modifier);
+			}
+		} else {
+			objectList[i].vX = 0;
+		}
 	}
 };
 

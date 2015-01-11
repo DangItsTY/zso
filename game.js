@@ -6,7 +6,7 @@
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
 //	Preload
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
-var preload = function() {
+var preload_saturation = function() {
 	objectList[oCount] = new flybot(CANVASWIDTH/2, CANVASHEIGHT/2);
 	selectedPlayer = oCount - 1;
 	
@@ -14,7 +14,7 @@ var preload = function() {
 	objectList[oCount] = new physics(0, 0);
 	oPhysics = oCount - 1;
 	objectList[oCount] = new camera(0, 0);
-	
+		
 	var testloc = 0;
 	for (i = 0; i < 40; i++) {
 		switch(rollFrequency(desert)) {
@@ -35,6 +35,43 @@ var preload = function() {
 		}
 		testloc += 16;
 	}
+	
+	//tileList[tCount] = new filter1(0, 0);	//	is it better to draw polygons or use my own images? does it matter?
+};
+
+var preload_rollfrequency = function() {
+	objectList[oCount] = new survivor(CANVASWIDTH/2 - 400, CANVASHEIGHT/2 - 200);
+	selectedPlayer = oCount - 1;
+	
+	//	System objects
+	objectList[oCount] = new physics(0, 0);
+	oPhysics = oCount - 1;
+	objectList[oCount] = new camera(0, 0);
+	
+	//tileList[tCount] = new forestbg(-1300, -700);
+	
+	var testloc = 0;
+	for (i = 0; i < 40; i++) {
+		switch(rollFrequency(frequencies)) {
+			case 0:
+				tileList[tCount] = new tile1(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			case 1:
+				tileList[tCount] = new tile2(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			case 2:
+				tileList[tCount] = new tile3(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			case 3:
+				tileList[tCount] = new tile4(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			default:
+				//	Nothing
+		}
+		testloc += 16;
+	}
+	
+	//tileList[tCount] = new filter1(0, 0);
 };
 
 var preload2 = function() {
@@ -104,7 +141,7 @@ var preload2 = function() {
 	}
 	
 	//	Spawn a zombie
-	objectList[oCount] = new zombie(160, 352);
+	objectList[oCount] = new zombie(160, 352);	
 };
 
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
@@ -113,7 +150,7 @@ var preload2 = function() {
 var update = function () {
 	//	First gather input
 	objectList[selectedPlayer].runInput();
-	
+	//console.log("Sequence: " + controlsequence + "\n" + "Sequence_hold: " + controlsequence_hold + "\n" + "Sequence_tap: " + controlsequence_tap);	
 	//	Call act on all objects. Pass in a time variable, and a reference to itself
 	//	Modifier - calculated time. ex: x += 50*modifier means move 50 pixels to the right in 1 second
 	for (var i = 0; i < objectList.length; i++) {
@@ -212,6 +249,8 @@ var update = function () {
 	
 	
 	//	Resolve jump
+	//	I moved this to input
+	/*
 	for (var j = 0; j < tileList.length; j++) {
 		if (collidesWith(objectList[selectedPlayer], tileList[j])) {
 			//	Floor collision
@@ -222,6 +261,7 @@ var update = function () {
 			}
 		}
 	}
+	*/
 	
 	//	Clean list, destroying all dead objects
 	for (var i = 0; i < objectList.length; i++) {
@@ -267,7 +307,7 @@ var update = function () {
 	}
 	
 	//	TyNote: Recommended to place debug messages here
-	document.getElementById("debug1").innerHTML = "#1: " + objectList[selectedPlayer].y;
+	document.getElementById("debug1").innerHTML = "#1: Y - " + objectList[selectedPlayer].y + ", X - " + objectList[selectedPlayer].x;
 	document.getElementById("debug2").innerHTML = "#2: " + objectList[selectedPlayer].airtimer;
 	document.getElementById("debug3").innerHTML = "#3 Health: " + objectList[selectedPlayer].health;
 	document.getElementById("debug4").innerHTML = "#4 Zombies Killed: " + zombiekills;
@@ -319,6 +359,6 @@ var gameloop = function() {
 //	Start Game Engine
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
 then = Date.now();
-preload();
+preload_rollfrequency();
 // window.requestAnimFrame(gameloop);
 setInterval(gameloop,1);

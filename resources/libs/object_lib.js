@@ -53,7 +53,7 @@ var flybot = function(x, y) {
 	this.image = new Image();
 	this.image.src = "resources/images/square_red.png";
 	this.collisionType = "transparent";
-	this.runInput = function() { flybot_input(); };
+	this.runInput = function() { recordcontrolsequence(); flybot_input(); };
 	this.act = function(object) { };
 	this.resolve = function(object) { };
 	
@@ -132,6 +132,7 @@ var physics = function(x, y) {
 	this.resolve = function(object) { };
 	
 	this.gravityForce = 0.3;
+	this.frictionForce = 32;
 	this.vX = 0;
 	this.vY = 0;
 	this.readytodie = false;
@@ -219,13 +220,14 @@ var survivor = function(x, y) {
 	this.target;
 	this.readytoattack;
 	this.readytodie = false;
+	//this.speed = 256;
 	this.speed = 256;
 	this.weight = 16;
 	this.airtimer = 0.0;
 	
 	this.jumpTimer = 0.0;
 	this.jumpSpeed = 192;
-	this.jumpDuration = 5;
+	this.jumpDuration = 0.05;
 	this.jumpReady = true;
 	
 	this.doubleJumpTimer = 0.0;
@@ -238,6 +240,8 @@ var survivor = function(x, y) {
 	
 	this.vX = 0;
 	this.vY = 0;
+	
+	this.grounded = true;	//	True if touching ground
 	
 	this.direction = -1;
 	
@@ -504,3 +508,79 @@ var forestbg = function(x, y) {
 	this.collisionType = "parallax";
 	tCount++;
 };
+
+var filter1 = function(x, y) {
+	this.x = x;
+	this.y = y;
+	this.size = 2000;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/filter_black.png";
+	this.collisionType = "persistent";
+	tCount++;
+};
+
+
+
+
+
+
+
+
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+//	System Objects
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+
+var frequencies = new Array();
+frequencies[0] = 16;
+frequencies[1] = 5;
+frequencies[2] = 5;
+frequencies[3] = 1;
+//frequencies.sort(function(a, b){return b - a});	//	if i'm too lazy to sort, i can use this handy sort function!
+
+//	Some test cyberbit saturation levels'
+//	Lazy, will finish this later.
+//	Probably need to add a saturation object zzz
+//	And i need some art to go along with this
+//	Algorithm
+//	Saturate current area
+//	If fully saturated, find NEAREST unsaturated area (doesn't matter if void or partial)
+//		Show little wispy particle effects of it traveling
+//	Rinse and repeat
+//	If the entire world is saturated, don't show the particles flying everywhere
+//		Instead, have a permanent new layer that shows the wispy effect
+//		Show message saying can't saturate anymore
+var saturation = new Array();
+saturation[0] = 0;
+saturation[1] = 0;
+saturation[2] = 0;
+saturation[3] = 0;
+saturation[4] = 0;
+
+var saturation_threshold = new Array();
+saturation[0] = 10;
+saturation[1] = 10;
+saturation[2] = 10;
+saturation[3] = 10;
+saturation[4] = 10;
+
+var saturation_max = new Array();
+saturation[0] = 20;
+saturation[1] = 20;
+saturation[2] = 20;
+saturation[3] = 20;
+saturation[4] = 20;
+
+var saturation_count = 0;
+var saturation_timer = 1.0;
+
+var controlsequence = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var controlsequence_hold = new Array();
+var controlsequence_tap = new Array(200);
+for (i = 0; i < controlsequence_tap.length; i++)
+	controlsequence_tap[i] = 0;
+var tap_speed = 0.3;
+var tap_register = 10;
+
+var timerinit = 0.0001;	//	used to initialize timers

@@ -7,6 +7,7 @@ var drawList = function(list) {
 		//	Parameters: image, image x, image y, image width, image height, location x, location y, width, height
 		//	TyNote: This draws all objects to its center
 		//	TyNote: On the spritesheet, y refers to states and x refers to animation frames
+		//	TyNote: Location of camera is top left coordinate
 		
 		//	TyTest - New draw method with new actcamera method
 		if (list[i].collisionType == "parallax") {
@@ -77,20 +78,30 @@ var lower = 0;
 var percent = 0;
 var iterator = 0;
 var found = false;	//	Not sure if I actually need this
-while (!found) {
-	if (iterator == array.length - 1) {
-		found = true;
-		return iterator;
-	}
-	percent = (array[iterator] / total) + lower;
-	if (lower <= target && target <= percent) {
-		found = true;
-		return iterator;
-	}
-	else {
-		lower = percent;
-		iterator += 1;
+	while (!found) {
+		if (iterator == array.length - 1) {
+			found = true;
+			return iterator;
+		}
+		percent = (array[iterator] / total) + lower;
+		if (lower <= target && target <= percent) {
+			found = true;
+			return iterator;
+		}
+		else {
+			lower = percent;
+			iterator += 1;
+		}
 	}
 }
 
-}
+function pushpop(item, array) {
+//	Functions like a push pop
+//	Works on an array of fixed size
+//	Basically, you put the new element inside the bottom, pushing everything up (the last element is removed)
+	var pop_i = 0;
+	for (pop_i = array.length-1; pop_i > 0; pop_i--) {
+		array[pop_i] = array[pop_i-1];
+	}
+	array[0] = item;
+};

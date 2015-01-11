@@ -10,23 +10,20 @@ var flybot_input = function() {
 	right_input();
 	up_input();
 	down_input();
-	releaseLeft_input();
-	releaseRight_input();
-	releaseUp_input();
-	releaseDown_input();
 };
 
 var survivor_input = function() {
+	recordcontrolsequence();
+	checkGround();
 	left_input();
 	right_input();
 	jump_input();
+	jumpreset_input();
 	action1_input();
 	action2_input();
 	action3_input();
 	releaseAction1_input();
 	releaseAction2_input();
 	releaseAction3_input();
-	releaseLeft_input();
-	releaseRight_input();
 	releaseSpacebar_input();
 };
