@@ -395,6 +395,6 @@ var gameloop = function() {
 //	Start Game Engine
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
 then = Date.now();
-preload_rollfrequency2();
+preload_rollfrequency();
 // window.requestAnimFrame(gameloop);
 setInterval(gameloop,1);
