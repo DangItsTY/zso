@@ -53,7 +53,7 @@ var flybot = function(x, y) {
 	this.image = new Image();
 	this.image.src = "resources/images/square_red.png";
 	this.collisionType = "transparent";
-	this.runInput = function() { recordcontrolsequence(); flybot_input(); };
+	this.runInput = function() { flybot_input(); };
 	this.act = function(object) { };
 	this.resolve = function(object) { };
 	
@@ -642,3 +642,29 @@ var tap_speed = 0.3;
 var tap_register = 10;
 
 var timerinit = 0.0001;	//	used to initialize timers
+
+
+
+
+
+
+
+
+
+
+
+
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+//	Tiles
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+var tile_1 = function(x, y, type) {
+	this.x = x;
+	this.y = y;
+	this.size = 100;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/grass.png";
+	this.collisionType = "solid";
+	tCount++;
+};

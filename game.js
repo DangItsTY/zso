@@ -6,6 +6,21 @@
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
 //	Preload
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+var preload_newworld = function () {
+	objectList[oCount] = new flybot(CANVASWIDTH/2, CANVASHEIGHT/2);
+	selectedPlayer = oCount - 1;
+	
+	//	System objects
+	objectList[oCount] = new physics(0, 0);
+	oPhysics = oCount - 1;
+	objectList[oCount] = new camera(0, 0);
+	
+	//	Draw the world
+	for (var i = 0; i < 8; i++) {
+		tileList[tCount] = new tile_1(i*100, 0);
+	}
+};
+
 var preload_saturation = function() {
 	objectList[oCount] = new flybot(CANVASWIDTH/2, CANVASHEIGHT/2);
 	selectedPlayer = oCount - 1;
@@ -343,10 +358,10 @@ var update = function () {
 	}
 	
 	//	TyNote: Recommended to place debug messages here
-	document.getElementById("debug1").innerHTML = "#1: Y - " + objectList[selectedPlayer].y + ", X - " + objectList[selectedPlayer].x;
-	document.getElementById("debug2").innerHTML = "#2: " + objectList[selectedPlayer].airtimer;
-	document.getElementById("debug3").innerHTML = "#3 Health: " + objectList[selectedPlayer].health;
-	document.getElementById("debug4").innerHTML = "#4 Zombies Killed: " + zombiekills;
+	//document.getElementById("debug1").innerHTML = "#1: Y - " + objectList[selectedPlayer].y + ", X - " + objectList[selectedPlayer].x;
+	//document.getElementById("debug2").innerHTML = "#2: " + objectList[selectedPlayer].airtimer;
+	//document.getElementById("debug3").innerHTML = "#3 Health: " + objectList[selectedPlayer].health;
+	//document.getElementById("debug4").innerHTML = "#4 Zombies Killed: " + zombiekills;
 };
 
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
@@ -395,6 +410,6 @@ var gameloop = function() {
 //	Start Game Engine
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
 then = Date.now();
-preload_rollfrequency();
+preload_newworld();
 // window.requestAnimFrame(gameloop);
 setInterval(gameloop,1);

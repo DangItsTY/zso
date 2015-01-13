@@ -216,3 +216,31 @@ var releaseDoubleJump_input = function() {
 		delete keysUp[key["spacebar"]];
 	}
 }
+
+//	Basic Move Up
+var basicup_input = function() {
+	if (key["up"] in keysDown) {
+		objectList[selectedPlayer].y -= objectList[selectedPlayer].speed * modifier;
+	}
+}
+
+//	Basic Move Down
+var basicdown_input = function() {
+	if (key["down"] in keysDown) {
+		objectList[selectedPlayer].y += objectList[selectedPlayer].speed * modifier;
+	}
+}
+
+//	Basic Move Left
+var basicleft_input = function() {
+	if (key["left"] in keysDown) {
+		objectList[selectedPlayer].x -= objectList[selectedPlayer].speed * modifier;
+	}
+}
+
+//	Basic Move Right
+var basicright_input = function() {
+	if (key["right"] in keysDown) {
+		objectList[selectedPlayer].x += objectList[selectedPlayer].speed * modifier;
+	}
+}

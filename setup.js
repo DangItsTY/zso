@@ -25,9 +25,9 @@ var zombiekills = 0;
 var gameOver = false;
 
 //	CONSTANTS
-var IMAGESIZE = 16;
-var CANVASWIDTH = 1024;
-var CANVASHEIGHT = 576;
+var IMAGESIZE = 50;
+var CANVASWIDTH = 800;
+var CANVASHEIGHT = 600;
 
 //	The canvas
 //var canvas = document.createElement("canvas");
