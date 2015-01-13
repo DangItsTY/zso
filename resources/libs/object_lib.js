@@ -248,6 +248,64 @@ var survivor = function(x, y) {
 	oCount++;
 };
 
+var cyberboy = function(x, y) {
+	//	~~~~~~~*~~~~~~~*
+	//	General Fields
+	//	~~~~~~~*~~~~~~~*
+	this.name = "cyberboy";
+	this.type = "player";
+	this.description = "A survivor of the zombie apocalypse. Controlled by a player";
+	this.x = x;
+	this.y = y;
+	this.size = 50;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/cyberboyfirst.png";
+	this.collisionType = "solid";
+	this.runInput = function() { survivor_input(); die_act(object); };
+	this.act = function(object) { };
+	this.resolve = function(object) { };
+	
+	//	~~~~~~~*~~~~~~~*
+	//	Property Fields
+	//	~~~~~~~*~~~~~~~*
+	this.health = 10;
+	this.damage = 1;
+	this.range;
+	this.attackspeed;
+	this.attacktimer;
+	this.target;
+	this.readytoattack;
+	this.readytodie = false;
+	//this.speed = 256;
+	this.speed = 256;
+	this.weight = 16;
+	this.airtimer = 0.0;
+	
+	this.jumpTimer = 0.0;
+	this.jumpSpeed = 192;
+	this.jumpDuration = 0.05;
+	this.jumpReady = true;
+	
+	this.doubleJumpTimer = 0.0;
+	this.doubleJumpSpeed = 256;
+	this.doubleJumpDuration = 1.0;
+	this.doubleJumpReady = false;
+	
+	this.jumpCount = 0;
+	this.jumpMax = 2;
+	
+	this.vX = 0;
+	this.vY = 0;
+	
+	this.grounded = true;	//	True if touching ground
+	
+	this.direction = -1;
+	
+	oCount++;
+};
+
 var zombie = function(x, y) {
 	//	~~~~~~~*~~~~~~~*
 	//	General Fields

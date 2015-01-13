@@ -39,6 +39,42 @@ var preload_saturation = function() {
 	//tileList[tCount] = new filter1(0, 0);	//	is it better to draw polygons or use my own images? does it matter?
 };
 
+//	Just testing out cyberboy image
+var preload_rollfrequency2 = function() {
+	objectList[oCount] = new cyberboy(CANVASWIDTH/2 - 400, CANVASHEIGHT/2 - 200);
+	selectedPlayer = oCount - 1;
+	
+	//	System objects
+	objectList[oCount] = new physics(0, 0);
+	oPhysics = oCount - 1;
+	objectList[oCount] = new camera(0, 0);
+	
+	//tileList[tCount] = new forestbg(-1300, -700);
+	
+	var testloc = 0;
+	for (i = 0; i < 40; i++) {
+		switch(rollFrequency(frequencies)) {
+			case 0:
+				tileList[tCount] = new tile1(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			case 1:
+				tileList[tCount] = new tile2(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			case 2:
+				tileList[tCount] = new tile3(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			case 3:
+				tileList[tCount] = new tile4(testloc, CANVASHEIGHT/2 - 64);
+				break;
+			default:
+				//	Nothing
+		}
+		testloc += 16;
+	}
+	
+	//tileList[tCount] = new filter1(0, 0);
+};
+
 var preload_rollfrequency = function() {
 	objectList[oCount] = new survivor(CANVASWIDTH/2 - 400, CANVASHEIGHT/2 - 200);
 	selectedPlayer = oCount - 1;
@@ -359,6 +395,6 @@ var gameloop = function() {
 //	Start Game Engine
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
 then = Date.now();
-preload_rollfrequency();
+preload_rollfrequency2();
 // window.requestAnimFrame(gameloop);
 setInterval(gameloop,1);
