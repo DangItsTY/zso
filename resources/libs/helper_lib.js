@@ -25,6 +25,10 @@ var collidesWith = function(object, target) {
 		object.y <= target.y + object.size && object.y >= target.y - object.size) {
 		return true;
 	}
+	else if (target.x <= object.x + target.size && target.x >= object.x - target.size &&
+		target.y <= object.y + target.size && target.y >= object.y - target.size) {
+		return true;
+	}
 	else {
 		return false;
 	}

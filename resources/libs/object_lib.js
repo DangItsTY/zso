@@ -153,7 +153,7 @@ var camera = function(x, y) {
 	this.image.src = "";
 	this.collisionType = "transparent";
 	this.runInput = function() { };
-	this.act = function(object) { actcamera(); };
+	this.act = function(object) { actcamera2(); };
 	this.resolve = function(object) { };
 	
 	this.vX = 0;
@@ -204,64 +204,6 @@ var survivor = function(x, y) {
 	this.imageY = 0;
 	this.image = new Image();
 	this.image.src = "resources/images/player.png";
-	this.collisionType = "solid";
-	this.runInput = function() { survivor_input(); die_act(object); };
-	this.act = function(object) { };
-	this.resolve = function(object) { };
-	
-	//	~~~~~~~*~~~~~~~*
-	//	Property Fields
-	//	~~~~~~~*~~~~~~~*
-	this.health = 10;
-	this.damage = 1;
-	this.range;
-	this.attackspeed;
-	this.attacktimer;
-	this.target;
-	this.readytoattack;
-	this.readytodie = false;
-	//this.speed = 256;
-	this.speed = 256;
-	this.weight = 16;
-	this.airtimer = 0.0;
-	
-	this.jumpTimer = 0.0;
-	this.jumpSpeed = 192;
-	this.jumpDuration = 0.05;
-	this.jumpReady = true;
-	
-	this.doubleJumpTimer = 0.0;
-	this.doubleJumpSpeed = 256;
-	this.doubleJumpDuration = 1.0;
-	this.doubleJumpReady = false;
-	
-	this.jumpCount = 0;
-	this.jumpMax = 2;
-	
-	this.vX = 0;
-	this.vY = 0;
-	
-	this.grounded = true;	//	True if touching ground
-	
-	this.direction = -1;
-	
-	oCount++;
-};
-
-var cyberboy = function(x, y) {
-	//	~~~~~~~*~~~~~~~*
-	//	General Fields
-	//	~~~~~~~*~~~~~~~*
-	this.name = "cyberboy";
-	this.type = "player";
-	this.description = "A survivor of the zombie apocalypse. Controlled by a player";
-	this.x = x;
-	this.y = y;
-	this.size = 50;
-	this.imageX = 0;
-	this.imageY = 0;
-	this.image = new Image();
-	this.image.src = "resources/images/cyberboyfirst.png";
 	this.collisionType = "solid";
 	this.runInput = function() { survivor_input(); die_act(object); };
 	this.act = function(object) { };
@@ -651,6 +593,69 @@ var timerinit = 0.0001;	//	used to initialize timers
 
 
 
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+//	Entities
+//	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
+
+
+
+var cyberboy = function(x, y) {
+	//	~~~~~~~*~~~~~~~*
+	//	General Fields
+	//	~~~~~~~*~~~~~~~*
+	this.name = "cyberboy";
+	this.type = "player";
+	this.description = "A survivor of the zombie apocalypse. Controlled by a player";
+	this.x = x;
+	this.y = y;
+	this.size = 50;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/cyberboyfirst.png";
+	this.collisionType = "solid";
+	this.runInput = function() { survivor_input(); die_act(object); };
+	this.act = function(object) { };
+	this.resolve = function(object) { };
+	
+	//	~~~~~~~*~~~~~~~*
+	//	Property Fields
+	//	~~~~~~~*~~~~~~~*
+	this.health = 10;
+	this.damage = 1;
+	this.range;
+	this.attackspeed;
+	this.attacktimer;
+	this.target;
+	this.readytoattack;
+	this.readytodie = false;
+	//this.speed = 256;
+	this.speed = 256;
+	this.weight = 16;
+	this.airtimer = 0.0;
+	
+	this.jumpTimer = 0.0;
+	this.jumpSpeed = 192;
+	this.jumpDuration = 0.05;
+	this.jumpReady = true;
+	
+	this.doubleJumpTimer = 0.0;
+	this.doubleJumpSpeed = 256;
+	this.doubleJumpDuration = 1.0;
+	this.doubleJumpReady = false;
+	
+	this.jumpCount = 0;
+	this.jumpMax = 2;
+	
+	this.vX = 0;
+	this.vY = 0;
+	
+	this.grounded = true;	//	True if touching ground
+	
+	this.direction = -1;
+	
+	oCount++;
+};
 
 
 
@@ -666,5 +671,41 @@ var tile_1 = function(x, y, type) {
 	this.image = new Image();
 	this.image.src = "resources/images/grass.png";
 	this.collisionType = "solid";
+	tCount++;
+};
+
+var tile_2 = function(x, y, type) {
+	this.x = x;
+	this.y = y;
+	this.size = 100;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/mainport.png";
+	this.collisionType = "transparent";
+	tCount++;
+};
+
+var tile_3 = function(x, y, type) {
+	this.x = x;
+	this.y = y;
+	this.size = 50;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/plant.png";
+	this.collisionType = "transparent";
+	tCount++;
+};
+
+var tile_4 = function(x, y, type) {
+	this.x = x;
+	this.y = y;
+	this.size = 100;
+	this.imageX = 0;
+	this.imageY = 0;
+	this.image = new Image();
+	this.image.src = "resources/images/cyberwall.png";
+	this.collisionType = "transparent";
 	tCount++;
 };

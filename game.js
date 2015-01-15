@@ -7,7 +7,7 @@
 //	Preload
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
 var preload_newworld = function () {
-	objectList[oCount] = new flybot(CANVASWIDTH/2, CANVASHEIGHT/2);
+	objectList[oCount] = new cyberboy(0, -100);
 	selectedPlayer = oCount - 1;
 	
 	//	System objects
@@ -19,6 +19,8 @@ var preload_newworld = function () {
 	for (var i = 0; i < 8; i++) {
 		tileList[tCount] = new tile_1(i*100, 0);
 	}
+	tileList[tCount] = new tile_2(200, -100);
+	tileList[tCount] = new tile_3(300, -75);
 };
 
 var preload_saturation = function() {
@@ -233,26 +235,30 @@ var update = function () {
 				//objectList[selectedPlayer].dashReady = true;
 				//objectList[selectedPlayer].jumpReady = true;
 					
+				/*
 				//	Right Wall collision
 				if (objectList[i].x < tileList[j].x - (objectList[i].size*0.25) &&
 						objectList[i].y > tileList[j].y - (objectList[i].size*0.75) && objectList[i].y < tileList[j].y + (objectList[i].size*0.75)) {										
-					objectList[i].x = tileList[j].x - 16;
+					objectList[i].x = tileList[j].x - tileList[j].size;
 					//objectList[i].prevX = tileList[j].x - 16;	//	the previous coordinates (same as below) are shifted a bit to avoid infinite collision
 					objectList[i].y -= objectList[i].weight/4 * modifier;
 				}
+				*/
 				
+				/*
 				//	Left Wall collision
 				if (objectList[i].x > tileList[j].x + (objectList[i].size*0.25) &&
 						objectList[i].y > tileList[j].y - (objectList[i].size*0.75) && objectList[i].y < tileList[j].y + (objectList[i].size*0.75)) {										
-					objectList[i].x = tileList[j].x + 16;
+					objectList[i].x = tileList[j].x + tileList[j].size;
 					//objectList[i].prevX = tileList[j].x + 16;
 					objectList[i].y -= objectList[i].weight/4 * modifier;
 				}
+				*/
 				
 				//	Floor collision
-				if (objectList[i].y < tileList[j].y - (objectList[i].size*0.25) &&
-						objectList[i].x > tileList[j].x - (objectList[i].size*0.75) && objectList[i].x < tileList[j].x + (objectList[i].size*0.75)) {										
-					objectList[i].y = tileList[j].y - 16;
+				if (objectList[i].y > tileList[j].y - (objectList[i].size/2 + tileList[j].size/2) &&
+						objectList[i].x > tileList[j].x - (objectList[i].size) && objectList[i].x < tileList[j].x + (objectList[i].size)) {										
+					objectList[i].y = tileList[j].y - (tileList[j].size/2 + objectList[i].size/2);
 					//objectList[i].prevY = tileList[j].y - 16;
 					//objectList[selectedPlayer].fastFallReady = false;
 					objectList[i].airtimer = 0;
@@ -262,12 +268,14 @@ var update = function () {
 					objectList[i].airtimer += modifier;
 				}
 				
+				/*
 				//	Ceiling collision
 				if (objectList[i].y > tileList[j].y + (objectList[i].size*0.25) &&
 						objectList[i].x > tileList[j].x - (objectList[i].size*0.75) && objectList[i].x < tileList[j].x + (objectList[i].size*0.75)) {
-					objectList[i].y = tileList[j].y + 16;
+					objectList[i].y = tileList[j].y + tileList[j].size;
 					//objectList[i].prevY = tileList[j].y + 16;
 				}
+				*/
 			}
 			else {
 				objectList[i].airtimer += modifier;
@@ -368,13 +376,16 @@ var update = function () {
 //	Render
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*
 var render = function () {
-	ctxOff.fillStyle = "rgb(0,0,0)";
+	ctxOff.fillStyle = "rgb(255,255,255)";
     ctxOff.fillRect (0,0,CANVASWIDTH,CANVASHEIGHT);		//	Draw black background
 	
 	drawList(tileList);	//	Draw objects (is now prerendered)
 	drawList(objectList);	//	Draw objects (is now prerendered)
 	
+	ctxOff.fillStyle = "rgba(0, 0, 50, 0.5)";		
+	ctxOff.fillRect (0,0,CANVASWIDTH,CANVASHEIGHT);		//	Draw black background
 	ctx.drawImage(canvasOff, 0, 0);		//	Draw prerendered canvas onto "real" canvas
+
 };
 
 //	~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*~~~~~~~TD~~~~~~*

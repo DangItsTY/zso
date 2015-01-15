@@ -191,3 +191,9 @@ var actcamera = function() {
 	objectList[selectedPlayer].y = CANVASHEIGHT/2;
 	*/
 };
+
+var actcamera2 = function() {
+	//	Pans camera above player
+	cameraX = objectList[selectedPlayer].x - CANVASWIDTH/2;
+	cameraY = objectList[selectedPlayer].y - CANVASHEIGHT/2 - 175;
+};
